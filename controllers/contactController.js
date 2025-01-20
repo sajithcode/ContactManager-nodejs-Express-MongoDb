@@ -8,7 +8,13 @@ const getContacts = (req, res) => {
 //@desc Create New Contacts
 //@route POST /api/contacts
 //@access Public
-const createContacts = (req, res) => {
+const createContact = (req, res) => {
+  console.log("The request body is: ", req.body);
+  const { name, email, phone } = req.body;
+  if(!name || !email || !phone){
+    res.status(404);
+    throw new Error("All fields are mandatory !");
+  } 
   res.status(200).json({ message: "Create contacts" });
 };
 
@@ -19,12 +25,6 @@ const getContact = (req, res) => {
   res.status(200).json({ message: `Get contacts for ${req.params.id}` });
 };
 
-//@desc Create New Contacts
-//@route GET /api/contacts
-//@access Public
-const createContact = (req, res) => {
-  res.status(200).json({ message: "Create contacts" });
-};
 
 //@desc update Contact
 //@route PUT /api/contacts
