@@ -50,7 +50,7 @@ const updateContact = asyncHandler(async (req, res) => {
     req.params.id,
     req.body,
     {
-      new: true
+      new: true,
     }
   );
   res.status(200).json(updatedContact);
@@ -65,7 +65,7 @@ const deleteContact = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Contact not found!");
   }
-  await Contact.deleteOne({_id: req.params.id});
+  await Contact.deleteOne({ _id: req.params.id });
   res.status(200).json(contact);
 });
 
